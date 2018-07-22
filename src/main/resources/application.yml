@@ -1,0 +1,14 @@
+spring:
+  profiles:
+      active: dev
+  thymeleaf:
+    mode: HTML
+    cache: false
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: mybatis/**/*Mapper.xml
+  typeAliasesPackage: com.bluecity.**.domain
