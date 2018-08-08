@@ -51,7 +51,7 @@
         var j = 0;
         // 递归获取子节点并且设置子节点
         target.getChildNodes = function(data, parentNode, parentIndex, tbody) {
-            $.each(data, function(i, item) {
+            $.each(data.rows, function(i, item) {
                 if (item[options.parentCode] == parentNode[options.code]) {
                     var tr = $('<tr></tr>');
                     var nowParentIndex = (parentIndex + (j++) + 1);
@@ -137,7 +137,7 @@
                         tbody.html(_empty);
                         return;
                     }
-                    var rootNode = target.getRootNodes(data);
+                    var rootNode = target.getRootNodes(data.rows);
                     $.each(rootNode, function(i, item) {
                         var tr = $('<tr></tr>');
                         tr.addClass('treegrid-' + (j + "_" + i));
@@ -147,7 +147,7 @@
                         target.getChildNodes(data, item, (j + "_" + i), tbody);
                     });
                     // 下边的操作主要是为了查询时让一些没有根节点的节点显示
-                    $.each(data, function(i, item) {
+                    $.each(data.rows, function(i, item) {
                         if(!item.isShow){
                             var tr = $('<tr></tr>');
                             tr.addClass('treegrid-' + (j + "_" + i));
