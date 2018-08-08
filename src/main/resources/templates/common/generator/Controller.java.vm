@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import ${package}.domain.${className}DO;
 import ${package}.service.${className}Service;
-import com.bluecity.common.utils.PageUtils;
-import com.bluecity.common.utils.Query;
-import com.bluecity.common.utils.R;
+import com.bluecity.cbs.common.utils.PageUtils;
+import com.bluecity.cbs.common.utils.Query;
+import com.bluecity.cbs.common.utils.R;
 
 /**
  * ${comments}
@@ -59,10 +59,10 @@ public class ${className}Controller {
 	    return "${pathName}/${classname}/add";
 	}
 
-	@GetMapping("/edit/{${pk.attrname}}")
+	@GetMapping("/edit/{${pk.attributeName}}")
 	@RequiresPermissions("${pathName}:${classname}:edit")
-	String edit(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname},Model model){
-		${className}DO ${classname} = ${classname}Service.get(${pk.attrname});
+	String edit(@PathVariable("${pk.attributeName}") ${pk.attributeType} ${pk.attributeName},Model model){
+		${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
 		model.addAttribute("${classname}", ${classname});
 	    return "${pathName}/${classname}/edit";
 	}
@@ -96,8 +96,8 @@ public class ${className}Controller {
 	@PostMapping( "/remove")
 	@ResponseBody
 	@RequiresPermissions("${pathName}:${classname}:remove")
-	public R remove( ${pk.attrType} ${pk.attrname}){
-		if(${classname}Service.remove(${pk.attrname})>0){
+	public R remove( ${pk.attributeType} ${pk.attributeName}){
+		if(${classname}Service.remove(${pk.attributeName})>0){
 		return R.ok();
 		}
 		return R.error();
@@ -109,8 +109,8 @@ public class ${className}Controller {
 	@PostMapping( "/batchRemove")
 	@ResponseBody
 	@RequiresPermissions("${pathName}:${classname}:batchRemove")
-	public R remove(@RequestParam("ids[]") ${pk.attrType}[] ${pk.attrname}s){
-		${classname}Service.batchRemove(${pk.attrname}s);
+	public R remove(@RequestParam("ids[]") ${pk.attributeType}[] ${pk.attributeName}s){
+		${classname}Service.batchRemove(${pk.attributeName}s);
 		return R.ok();
 	}
 	

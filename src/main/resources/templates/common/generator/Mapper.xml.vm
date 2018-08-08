@@ -11,7 +11,7 @@
 		select #foreach($column in $columns)`$column.columnName`#if($velocityCount != $columns.size()),#end#end from ${tableName}
         <where>  
 		  #foreach($column in $columns)
-		  <if test="$column.attrname != null and $column.attrname.trim() != ''"> and $column.columnName = #{$column.attrname} </if>
+		  <if test="$column.attributeName != null and $column.attributeName.trim() != ''"> and $column.columnName = #{$column.attributeName} </if>
 		  #end
 		</where>
         <choose>
@@ -31,12 +31,12 @@
 		select count(*) from ${tableName}
 		 <where>  
 		  #foreach($column in $columns)
-		  <if test="$column.attrname != null and $column.attrname.trim() != ''"> and $column.columnName = #{$column.attrname} </if>
+		  <if test="$column.attributeName != null and $column.attributeName.trim() != ''"> and $column.columnName = #{$column.attributeName} </if>
 		  #end
 		</where>
 	</select>
 	 
-	<insert id="save" parameterType="${package}.domain.${className}DO"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attrname"#end>
+	<insert id="save" parameterType="${package}.domain.${className}DO"#if($pk.extra == 'auto_increment') useGeneratedKeys="true" keyProperty="$pk.attributeName"#end>
 		insert into ${tableName}
 		(
 #foreach($column in $columns)
@@ -50,7 +50,7 @@
 		(
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-			#{$column.attrname}#if($velocityCount != $columns.size()), #end
+			#{$column.attributeName}#if($velocityCount != $columns.size()), #end
 
 #end			
 #end
@@ -62,11 +62,11 @@
 		<set>
 #foreach($column in $columns)
 #if($column.columnName != $pk.columnName)
-			<if test="$column.attrname != null">`$column.columnName` = #{$column.attrname}#if($velocityCount != $columns.size()), #end</if>
+			<if test="$column.attributeName != null">`$column.columnName` = #{$column.attributeName}#if($velocityCount != $columns.size()), #end</if>
 #end
 #end
 		</set>
-		where ${pk.columnName} = #{${pk.attrname}}
+		where ${pk.columnName} = #{${pk.attributeName}}
 	</update>
 	
 	<delete id="remove">
@@ -75,8 +75,8 @@
 	
 	<delete id="batchRemove">
 		delete from ${tableName} where ${pk.columnName} in 
-		<foreach item="${pk.attrname}" collection="array" open="(" separator="," close=")">
-			#{${pk.attrname}}
+		<foreach item="${pk.attributeName}" collection="array" open="(" separator="," close=")">
+			#{${pk.attributeName}}
 		</foreach>
 	</delete>
 

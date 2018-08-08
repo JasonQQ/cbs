@@ -16,7 +16,7 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ${className}Dao {
 
-	${className}DO get(${pk.attrType} ${pk.attrname});
+	${className}DO get(${pk.attributeType} ${pk.attributeName});
 	
 	List<${className}DO> list(Map<String,Object> map);
 	
@@ -26,7 +26,7 @@ public interface ${className}Dao {
 	
 	int update(${className}DO ${classname});
 	
-	int remove(${pk.attrType} ${pk.columnName});
+	int remove(${pk.attributeType} ${pk.columnName});
 	
-	int batchRemove(${pk.attrType}[] ${pk.attrname}s);
+	int batchRemove(${pk.attributeType}[] ${pk.attributeName}s);
 }

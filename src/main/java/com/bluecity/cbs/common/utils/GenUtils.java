@@ -41,7 +41,7 @@ public class GenUtils {
         templates.add("templates/common/generator/list.js.vm");
         templates.add("templates/common/generator/add.js.vm");
         templates.add("templates/common/generator/edit.js.vm");
-        //templates.add("templates/common/generator/menu.sql.vm");
+        templates.add("templates/common/generator/menu.sql.vm");
         return templates;
     }
 
@@ -75,11 +75,11 @@ public class GenUtils {
             //列名转换成Java属性名
             String attrName = columnToJava(columnDO.getColumnName());
             columnDO.setAttrName(attrName);
-            columnDO.setAttrNameLowerCase(StringUtils.uncapitalize(attrName));
+            columnDO.setAttributeName(StringUtils.uncapitalize(attrName));
 
             //列的数据类型，转换成Java类型
-            String attrType = config.getString(columnDO.getDataType(), "unknowType");
-            columnDO.setAttrType(attrType);
+            String attributeType = config.getString(columnDO.getDataType(), "unknowType");
+            columnDO.setAttributeType(attributeType);
 
             //是否主键
             if ("PRI".equalsIgnoreCase(column.get("columnKey")) && tableDO.getPk() == null) {
@@ -234,9 +234,9 @@ public class GenUtils {
                     + "appjs" + File.separator + packageName + File.separator + classname + File.separator + "edit.js";
         }
 
-//		if(template.contains("menu.sql.vm")){
-//			return className.toLowerCase() + "_menu.sql";
-//		}
+		if(template.contains("menu.sql.vm")){
+			return className.toLowerCase() + "_menu.sql";
+		}
 
         return null;
     }

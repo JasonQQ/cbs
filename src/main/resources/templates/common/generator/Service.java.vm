@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public interface ${className}Service {
 	
-	${className}DO get(${pk.attrType} ${pk.attrname});
+	${className}DO get(${pk.attributeType} ${pk.attributeName});
 	
 	List<${className}DO> list(Map<String, Object> map);
 	
@@ -24,7 +24,7 @@ public interface ${className}Service {
 	
 	int update(${className}DO ${classname});
 	
-	int remove(${pk.attrType} ${pk.attrname});
+	int remove(${pk.attributeType} ${pk.attributeName});
 	
-	int batchRemove(${pk.attrType}[] ${pk.attrname}s);
+	int batchRemove(${pk.attributeType}[] ${pk.attributeName}s);
 }

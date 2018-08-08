@@ -14,9 +14,9 @@ public class ColumnDO {
     // 属性名称(第一个字母大写)，如：user_name => UserName
     private String attrName;
     // 属性名称(第一个字母小写)，如：user_name => userName
-    private String attrNameLowerCase;
+    private String attributeName;
     // 属性类型
-    private String attrType;
+    private String attributeType;
     // auto_increment
     private String extra;
 }

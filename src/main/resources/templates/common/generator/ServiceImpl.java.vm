@@ -18,8 +18,8 @@ public class ${className}ServiceImpl implements ${className}Service {
 	private ${className}Dao ${classname}Dao;
 	
 	@Override
-	public ${className}DO get(${pk.attrType} ${pk.attrname}){
-		return ${classname}Dao.get(${pk.attrname});
+	public ${className}DO get(${pk.attributeType} ${pk.attributeName}){
+		return ${classname}Dao.get(${pk.attributeName});
 	}
 	
 	@Override
@@ -43,13 +43,13 @@ public class ${className}ServiceImpl implements ${className}Service {
 	}
 	
 	@Override
-	public int remove(${pk.attrType} ${pk.attrname}){
-		return ${classname}Dao.remove(${pk.attrname});
+	public int remove(${pk.attributeType} ${pk.attributeName}){
+		return ${classname}Dao.remove(${pk.attributeName});
 	}
 	
 	@Override
-	public int batchRemove(${pk.attrType}[] ${pk.attrname}s){
-		return ${classname}Dao.batchRemove(${pk.attrname}s);
+	public int batchRemove(${pk.attributeType}[] ${pk.attributeName}s){
+		return ${classname}Dao.batchRemove(${pk.attributeName}s);
 	}
 	
 }

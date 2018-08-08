@@ -23,13 +23,13 @@ public interface ${className}Mapper {
 	@Select("select #foreach($column in $columns)
 `$column.columnName`#if($velocityCount != $columns.size()), #end	
 #end from ${tableName} where ${pk.columnName} = #{id}")
-	${className}DO get(${pk.attrType} ${pk.attrname});
+	${className}DO get(${pk.attributeType} ${pk.attributeName});
 	
 	@Select("<script>" +
 	"select * from ${tableName} " + 
 			"<where>" + 
 		  #foreach($column in $columns)
-		  "<if test=\"$column.attrname != null and $column.attrname.trim() != ''\">"+ "and $column.columnName = #{$column.attrname} " + "</if>" + 
+		  "<if test=\"$column.attributeName != null and $column.attributeName.trim() != ''\">"+ "and $column.columnName = #{$column.attributeName} " + "</if>" +
 		  #end
 			"</where>"+ 
 			" <choose>" + 
@@ -50,7 +50,7 @@ public interface ${className}Mapper {
 	"select count(*) from ${tableName} " + 
 			"<where>" + 
 		  #foreach($column in $columns)
-		  "<if test=\"$column.attrname != null and $column.attrname.trim() != ''\">"+ "and $column.columnName = #{$column.attrname} " + "</if>" + 
+		  "<if test=\"$column.attributeName != null and $column.attributeName.trim() != ''\">"+ "and $column.columnName = #{$column.attributeName} " + "</if>" +
 		  #end
 			"</where>"+ 
 			"</script>")
@@ -63,7 +63,7 @@ public interface ${className}Mapper {
 #end)"
 	+ "values (#foreach($column in $columns)
 #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-#{$column.attrname}#if($velocityCount != $columns.size()), #end
+#{$column.attributeName}#if($velocityCount != $columns.size()), #end
 #end			
 #end)")
 	int save(${className}DO ${classname});
@@ -72,21 +72,21 @@ public interface ${className}Mapper {
 			"update ${tableName} " + 
 					"<set>" + 
 		  #foreach($column in $columns)
-          "<if test=\"$column.attrname != null\">`$column.columnName` = #{$column.attrname}, </if>" + 
+          "<if test=\"$column.attributeName != null\">`$column.columnName` = #{$column.attributeName}, </if>" +
           #end
 					"</set>" + 
-					"where ${pk.columnName} = #{${pk.attrname}}"+
+					"where ${pk.columnName} = #{${pk.attributeName}}"+
 			"</script>")
 	int update(${className}DO ${classname});
 	
-	@Delete("delete from ${tableName} where ${pk.columnName} =#{${pk.attrname}}")
-	int remove(${pk.attrType} ${pk.columnName});
+	@Delete("delete from ${tableName} where ${pk.columnName} =#{${pk.attributeName}}")
+	int remove(${pk.attributeType} ${pk.columnName});
 	
 	@Delete("<script>"+ 
 			"delete from ${tableName} where ${pk.columnName} in " + 
-					"<foreach item=\"${pk.attrname}\" collection=\"array\" open=\"(\" separator=\",\" close=\")\">" + 
-						"#{${pk.attrname}}" + 
+					"<foreach item=\"${pk.attributeName}\" collection=\"array\" open=\"(\" separator=\",\" close=\")\">" +
+						"#{${pk.attributeName}}" +
 					"</foreach>"+
 			"</script>")
-	int batchRemove(${pk.attrType}[] ${pk.attrname}s);
+	int batchRemove(${pk.attributeType}[] ${pk.attributeName}s);
 }
