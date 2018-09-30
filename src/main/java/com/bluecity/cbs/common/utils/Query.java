@@ -16,8 +16,16 @@ public class Query extends LinkedHashMap<String, Object> {
     public Query(Map<String, Object> params) {
         this.putAll(params);
         // 分页参数
-        this.offset = Integer.parseInt(params.get("offset").toString());
-        this.limit = Integer.parseInt(params.get("limit").toString());
+        if (params.get("offset") != null) {
+            this.offset = Integer.parseInt(params.get("offset").toString());
+        } else {
+            this.offset = 0;
+        }
+        if (params.get("limit") != null) {
+            this.limit = Integer.parseInt(params.get("limit").toString());
+        } else {
+            this.limit = 10;
+        }
         this.put("offset", offset);
         this.put("page", offset / limit + 1);
         this.put("limit", limit);
