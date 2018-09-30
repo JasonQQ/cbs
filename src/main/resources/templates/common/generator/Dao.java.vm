@@ -1,6 +1,4 @@
-package
-
-    ${package}.dao;
+package ${package}.dao;
 
 import ${package}.domain.${className}DO;
 
