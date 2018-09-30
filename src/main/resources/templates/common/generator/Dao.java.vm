@@ -1,4 +1,6 @@
-package ${package}.dao;
+package
+
+    ${package}.dao;
 
 import ${package}.domain.${className}DO;
 
@@ -16,17 +18,17 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface ${className}Dao {
 
-	${className}DO get(${pk.attributeType} ${pk.attributeName});
-	
-	List<${className}DO> list(Map<String,Object> map);
-	
-	int count(Map<String,Object> map);
-	
-	int save(${className}DO ${classname});
-	
-	int update(${className}DO ${classname});
-	
-	int remove(${pk.attributeType} ${pk.columnName});
-	
-	int batchRemove(${pk.attributeType}[] ${pk.attributeName}s);
+    ${className}DO get(${pk.attributeType} ${pk.attributeName});
+
+    List<${className}DO> list(Map<String, Object> map);
+
+    int count(Map<String, Object> map);
+
+    int save(${className}DO ${classname});
+
+    int update(${className}DO ${classname});
+
+    int remove(${pk.attributeType} ${pk.columnName});
+
+    int batchRemove(${pk.attributeType}[]${pk.attributeName}s);
 }

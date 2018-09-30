@@ -7,6 +7,7 @@ $.validator.setDefaults({
         update();
     }
 });
+
 function update() {
     $.ajax({
         cache: true,
@@ -32,6 +33,7 @@ function update() {
     });
 
 }
+
 function validateRule() {
     var icon = "<i class='fa fa-times-circle'></i> ";
     $("#signupForm").validate({

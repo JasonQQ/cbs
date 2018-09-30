@@ -23,95 +23,96 @@ import com.bluecity.cbs.common.utils.R;
 
 /**
  * ${comments}
- * 
+ *
  * @author ${author}
  * @email ${email}
  * @date ${datetime}
  */
- 
+
 @Controller
 @RequestMapping("/${pathName}/${classname}")
 public class ${className}Controller {
-	@Autowired
-	private ${className}Service ${classname}Service;
-	
-	@GetMapping()
-	@RequiresPermissions("${pathName}:${classname}:${classname}")
-	String ${className}(){
-	    return "${pathName}/${classname}/${classname}";
-	}
-	
-	@ResponseBody
-	@GetMapping("/list")
-	@RequiresPermissions("${pathName}:${classname}:${classname}")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        Query query = new Query(params);
-		List<${className}DO> ${classname}List = ${classname}Service.list(query);
-		int total = ${classname}Service.count(query);
-		PageUtils pageUtils = new PageUtils(${classname}List, total);
-		return pageUtils;
-	}
-	
-	@GetMapping("/add")
-	@RequiresPermissions("${pathName}:${classname}:add")
-	String add(){
-	    return "${pathName}/${classname}/add";
-	}
+    @Autowired
+    private ${className}Service ${classname}Service;
 
-	@GetMapping("/edit/{${pk.attributeName}}")
-	@RequiresPermissions("${pathName}:${classname}:edit")
-	String edit(@PathVariable("${pk.attributeName}") ${pk.attributeType} ${pk.attributeName},Model model){
-		${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
-		model.addAttribute("${classname}", ${classname});
-	    return "${pathName}/${classname}/edit";
-	}
-	
-	/**
-	 * 保存
-	 */
-	@ResponseBody
-	@PostMapping("/save")
-	@RequiresPermissions("${pathName}:${classname}:add")
-	public R save( ${className}DO ${classname}){
-		if(${classname}Service.save(${classname})>0){
-			return R.ok();
-		}
-		return R.error();
-	}
-	/**
-	 * 修改
-	 */
-	@ResponseBody
-	@RequestMapping("/update")
-	@RequiresPermissions("${pathName}:${classname}:edit")
-	public R update( ${className}DO ${classname}){
-		${classname}Service.update(${classname});
-		return R.ok();
-	}
-	
-	/**
-	 * 删除
-	 */
-	@PostMapping( "/remove")
-	@ResponseBody
-	@RequiresPermissions("${pathName}:${classname}:remove")
-	public R remove( ${pk.attributeType} ${pk.attributeName}){
-		if(${classname}Service.remove(${pk.attributeName})>0){
-		return R.ok();
-		}
-		return R.error();
-	}
-	
-	/**
-	 * 删除
-	 */
-	@PostMapping( "/batchRemove")
-	@ResponseBody
-	@RequiresPermissions("${pathName}:${classname}:batchRemove")
-	public R remove(@RequestParam("ids[]") ${pk.attributeType}[] ${pk.attributeName}s){
-		${classname}Service.batchRemove(${pk.attributeName}s);
-		return R.ok();
-	}
-	
+    @GetMapping()
+    @RequiresPermissions("${pathName}:${classname}:${classname}")
+    String ${className}() {
+        return "${pathName}/${classname}/${classname}" ;
+    }
+
+    @ResponseBody
+    @GetMapping("/list")
+    @RequiresPermissions("${pathName}:${classname}:${classname}")
+    public PageUtils list(@RequestParam Map<String, Object> params) {
+        //查询列表数据
+        Query query = new Query(params);
+        List<${className}DO> ${classname}List = ${classname}Service.list(query);
+        int total = ${classname}Service.count(query);
+        PageUtils pageUtils = new PageUtils(${classname}List, total);
+        return pageUtils;
+    }
+
+    @GetMapping("/add")
+    @RequiresPermissions("${pathName}:${classname}:add")
+    String add() {
+        return "${pathName}/${classname}/add" ;
+    }
+
+    @GetMapping("/edit/{${pk.attributeName}}")
+    @RequiresPermissions("${pathName}:${classname}:edit")
+    String edit(@PathVariable("${pk.attributeName}") ${pk.attributeType} ${pk.attributeName}, Model model) {
+            ${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
+        model.addAttribute("${classname}", ${classname});
+        return "${pathName}/${classname}/edit" ;
+    }
+
+    /**
+     * 保存
+     */
+    @ResponseBody
+    @PostMapping("/save")
+    @RequiresPermissions("${pathName}:${classname}:add")
+    public R save(${className}DO ${classname}) {
+        if (${classname}Service.save(${classname}) > 0) {
+            return R.ok();
+        }
+        return R.error();
+    }
+
+    /**
+     * 修改
+     */
+    @ResponseBody
+    @RequestMapping("/update")
+    @RequiresPermissions("${pathName}:${classname}:edit")
+    public R update(${className}DO ${classname}) {
+            ${classname}Service.update(${classname});
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/remove")
+    @ResponseBody
+    @RequiresPermissions("${pathName}:${classname}:remove")
+    public R remove( ${pk.attributeType} ${pk.attributeName}) {
+        if (${classname}Service.remove(${pk.attributeName}) > 0) {
+            return R.ok();
+        }
+        return R.error();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/batchRemove")
+    @ResponseBody
+    @RequiresPermissions("${pathName}:${classname}:batchRemove")
+    public R remove(@RequestParam("ids[]") ${pk.attributeType}[]${pk.attributeName}s) {
+            ${classname}Service.batchRemove(${pk.attributeName}s);
+        return R.ok();
+    }
+
 }
