@@ -38,7 +38,7 @@ public class ${className}Controller {
     @GetMapping()
     @RequiresPermissions("${pathName}:${classname}:${classname}")
     String ${className}() {
-        return "${pathName}/${classname}/${classname}" ;
+        return "${pathName}/${classname}/${classname}";
     }
 
     @ResponseBody
@@ -56,7 +56,7 @@ public class ${className}Controller {
     @GetMapping("/add")
     @RequiresPermissions("${pathName}:${classname}:add")
     String add() {
-        return "${pathName}/${classname}/add" ;
+        return "${pathName}/${classname}/add";
     }
 
     @GetMapping("/edit/{${pk.attributeName}}")
@@ -64,7 +64,7 @@ public class ${className}Controller {
     String edit(@PathVariable("${pk.attributeName}") ${pk.attributeType} ${pk.attributeName}, Model model) {
         ${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
         model.addAttribute("${classname}", ${classname});
-        return "${pathName}/${classname}/edit" ;
+        return "${pathName}/${classname}/edit";
     }
 
     /**
@@ -97,7 +97,7 @@ public class ${className}Controller {
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("${pathName}:${classname}:remove")
-    public R remove( ${pk.attributeType} ${pk.attributeName}) {
+    public R remove(${pk.attributeType} ${pk.attributeName}) {
         if (${classname}Service.remove(${pk.attributeName}) > 0) {
             return R.ok();
         }

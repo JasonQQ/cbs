@@ -38,7 +38,7 @@ public class MenuController {
     @GetMapping()
     @RequiresPermissions("system:menu:menu")
     String Menu() {
-        return "system/menu/menu" ;
+        return "system/menu/menu";
     }
 
     @ResponseBody
@@ -56,7 +56,7 @@ public class MenuController {
     @GetMapping("/add")
     @RequiresPermissions("system:menu:add")
     String add() {
-        return "system/menu/add" ;
+        return "system/menu/add";
     }
 
     @GetMapping("/edit/{menuId}")
@@ -64,7 +64,7 @@ public class MenuController {
     String edit(@PathVariable("menuId") Long menuId, Model model) {
         MenuDO menu = menuService.get(menuId);
         model.addAttribute("menu", menu);
-        return "system/menu/edit" ;
+        return "system/menu/edit";
     }
 
     /**
@@ -97,7 +97,7 @@ public class MenuController {
     @PostMapping("/remove")
     @ResponseBody
     @RequiresPermissions("system:menu:remove")
-    public R remove( Long menuId) {
+    public R remove(Long menuId) {
         if (menuService.remove(menuId) > 0) {
             return R.ok();
         }

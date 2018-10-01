@@ -10,7 +10,7 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 @SpringBootApplication
 public class CbsApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(CbsApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CbsApplication.class, args);
+    }
 }
