@@ -26,7 +26,7 @@ public class GeneratorServiceImpl implements GeneratorService {
     public byte[] generatorCode(String[] tableNames) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         ZipOutputStream zip = new ZipOutputStream(outputStream);
-        for(String tableName : tableNames){
+        for (String tableName : tableNames) {
             //查询表信息
             Map<String, String> table = generatorMapper.get(tableName);
             //查询列信息
