@@ -114,5 +114,4 @@ public class ${className}Controller {
             ${classname}Service.batchRemove(${pk.attributeName}s);
         return R.ok();
     }
-
 }

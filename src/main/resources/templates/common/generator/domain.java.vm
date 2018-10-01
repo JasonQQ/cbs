@@ -16,6 +16,7 @@ import java.math.BigDecimal;
  * @email ${email}
  * @date ${datetime}
  */
+
 @Data
 public class ${className}DO implements Serializable {
     private static final long serialVersionUID = 1L;
