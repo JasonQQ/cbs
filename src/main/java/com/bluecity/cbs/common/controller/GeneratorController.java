@@ -23,13 +23,13 @@ import java.util.Map;
 @RequestMapping("common/generator")
 @Controller
 public class GeneratorController {
-    String prefix = "common/generator" ;
+    String prefix = "common/generator";
     @Autowired
     GeneratorService generatorService;
 
     @GetMapping()
     String generator() {
-        return prefix + "/list" ;
+        return prefix + "/list";
     }
 
     @ResponseBody
@@ -77,7 +77,7 @@ public class GeneratorController {
         property.put("autoRemovePre", conf.getProperty("autoRemovePre"));
         property.put("tablePrefix", conf.getProperty("tablePrefix"));
         model.addAttribute("property", property);
-        return prefix + "/edit" ;
+        return prefix + "/edit";
     }
 
     @ResponseBody
