@@ -1,5 +1,6 @@
 var prefix = "/${pathName}/${classname}"
-$(function () {
+
+$().ready(function () {
     load();
 });
 
@@ -46,13 +47,13 @@ function load() {
                     {
                         checkbox: true
                     },
-                    #foreach($column in $columns)
-                        {
-                            field: '${column.attributeName}',
-                            title: '${column.comments}',
-                            align: 'center'
-                        },
-                    #end
+#foreach($column in $columns)
+                    {
+                        field: '${column.attributeName}',
+                        title: '${column.comments}',
+                        align: 'center'
+                    },
+#end
                     {
                         title: '操作',
                         field: 'id',

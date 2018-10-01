@@ -1,3 +1,5 @@
+var prefix = "/${pathName}/${classname}"
+
 $().ready(function () {
     validateRule();
 });
@@ -12,7 +14,7 @@ function save() {
     $.ajax({
         cache: true,
         type: "POST",
-        url: "/${pathName}/${classname}/save",
+        url: prefix + "/save",
         data: $('#signupForm').serialize(),// 你的formid
         async: false,
         error: function (request) {
@@ -44,7 +46,7 @@ function validateRule() {
         },
         messages: {
             name: {
-                required: icon + "请输入姓名"
+                required: icon + "请输入名称"
             }
         }
     })
