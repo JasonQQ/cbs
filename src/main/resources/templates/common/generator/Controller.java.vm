@@ -62,7 +62,7 @@ public class ${className}Controller {
     @GetMapping("/edit/{${pk.attributeName}}")
     @RequiresPermissions("${pathName}:${classname}:edit")
     String edit(@PathVariable("${pk.attributeName}") ${pk.attributeType} ${pk.attributeName}, Model model) {
-            ${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
+        ${className}DO ${classname} = ${classname}Service.get(${pk.attributeName});
         model.addAttribute("${classname}", ${classname});
         return "${pathName}/${classname}/edit" ;
     }
@@ -87,7 +87,7 @@ public class ${className}Controller {
     @RequestMapping("/update")
     @RequiresPermissions("${pathName}:${classname}:edit")
     public R update(${className}DO ${classname}) {
-            ${classname}Service.update(${classname});
+        ${classname}Service.update(${classname});
         return R.ok();
     }
 
@@ -111,7 +111,7 @@ public class ${className}Controller {
     @ResponseBody
     @RequiresPermissions("${pathName}:${classname}:batchRemove")
     public R remove(@RequestParam("ids[]") ${pk.attributeType}[]${pk.attributeName}s) {
-            ${classname}Service.batchRemove(${pk.attributeName}s);
+        ${classname}Service.batchRemove(${pk.attributeName}s);
         return R.ok();
     }
 }

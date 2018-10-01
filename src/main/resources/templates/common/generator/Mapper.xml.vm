@@ -4,18 +4,19 @@
 <mapper namespace="${package}.dao.${className}Dao">
 
     <select id="get" resultType="${package}.domain.${className}DO">
-		select #foreach($column in $columns)`$column.columnName`#if($velocityCount != $columns.size()),#end#end from ${tableName} where ${pk.columnName} = #{value}
+		select #foreach($column in $columns)`$column.columnName`#if($velocityCount != $columns.size()),#end#end
+        from ${tableName} where ${pk.columnName} = #{value}
 	</select>
 
     <select id="list" resultType="${package}.domain.${className}DO">
         select #foreach($column in $columns)`$column.columnName`#if($velocityCount != $columns.size()),#end#end
         from ${tableName}
         <where>
-            #foreach($column in $columns)
-                <if test="$column.attributeName != null and $column.attributeName.trim() != ''">and $column.columnName =
-                    #{$column.attributeName}
-                </if>
-            #end
+#foreach($column in $columns)
+            <if test="$column.attributeName != null and $column.attributeName.trim() != ''">
+                and $column.columnName = #{$column.attributeName}
+            </if>
+#end
         </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
@@ -33,11 +34,11 @@
     <select id="count" resultType="int">
         select count(*) from ${tableName}
         <where>
-            #foreach($column in $columns)
-                <if test="$column.attributeName != null and $column.attributeName.trim() != ''">and $column.columnName =
-                    #{$column.attributeName}
-                </if>
-            #end
+#foreach($column in $columns)
+            <if test="$column.attributeName != null and $column.attributeName.trim() != ''">
+            and $column.columnName = #{$column.attributeName}
+            </if>
+#end
         </where>
     </select>
 
@@ -46,32 +47,32 @@
 		insert into ${tableName}
 		(
 #foreach($column in $columns)
-        #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-			`$column.columnName`#if($velocityCount != $columns.size()), #end
+#if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+            `$column.columnName`#if($velocityCount != $columns.size()), #end
 
-        #end
-    #end
+#end
+#end
 		)
 		values
 		(
 #foreach($column in $columns)
-        #if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
-			#{$column.attributeName}#if($velocityCount != $columns.size()), #end
+#if($column.columnName != $pk.columnName || $pk.extra != 'auto_increment')
+            #{$column.attributeName}#if($velocityCount != $columns.size()), #end
 
-        #end
-    #end
+#end
+#end
 		)
 	</insert>
 
     <update id="update" parameterType="${package}.domain.${className}DO">
         update ${tableName}
         <set>
-            #foreach($column in $columns)
-                #if($column.columnName != $pk.columnName)
-                    <if test="$column.attributeName != null">`$column.columnName` = #{$column.attributeName
-                        }#if($velocityCount != $columns.size()), #end</if>
-                #end
-            #end
+#foreach($column in $columns)
+#if($column.columnName != $pk.columnName)
+            <if test="$column.attributeName != null">`$column.columnName` = #{$column.attributeName}#if($velocityCount != $columns.size()), #end
+            </if>
+#end
+#end
         </set>
         where ${pk.columnName} = #{${pk.attributeName}}
     </update>

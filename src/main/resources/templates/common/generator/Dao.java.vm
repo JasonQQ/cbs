@@ -17,7 +17,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ${className}Dao {
-
     ${className}DO get(${pk.attributeType} ${pk.attributeName});
 
     List<${className}DO> list(Map<String, Object> map);
