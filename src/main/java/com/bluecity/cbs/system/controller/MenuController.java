@@ -3,6 +3,7 @@ package com.bluecity.cbs.system.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.bluecity.cbs.common.annotation.Log;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -32,6 +33,7 @@ import com.bluecity.cbs.common.utils.R;
 @Controller
 @RequestMapping("/system/menu")
 public class MenuController {
+    private String prefix = "system/menu";
     @Autowired
     private MenuService menuService;
 
@@ -57,6 +59,19 @@ public class MenuController {
     @RequiresPermissions("system:menu:add")
     String add() {
         return "system/menu/add";
+    }
+
+    @Log("添加菜单")
+    @RequiresPermissions("sys:menu:add")
+    @GetMapping("/add/{pId}")
+    String add(Model model, @PathVariable("pId") Long pId) {
+        model.addAttribute("pId", pId);
+        if (pId == 0) {
+            model.addAttribute("pName", "根目录");
+        } else {
+            model.addAttribute("pName", menuService.get(pId).getName());
+        }
+        return prefix + "/add";
     }
 
     @GetMapping("/edit/{menuId}")

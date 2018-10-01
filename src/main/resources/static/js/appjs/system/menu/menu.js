@@ -6,7 +6,7 @@ $().ready(function () {
 
 function load() {
     $('#exampleTable')
-        .bootstrapTable(
+        .bootstrapTreeTable(
             {
                 method: 'GET', // 服务器数据的请求方式 get or post
                 url: prefix + "/list", // 服务器数据的加载地址
@@ -53,11 +53,6 @@ function load() {
                         align: 'center'
                     },
                     {
-                        field: 'parentId',
-                        title: '父编号',
-                        align: 'center'
-                    },
-                    {
                         field: 'name',
                         title: '名称',
                         align: 'center'
@@ -75,50 +70,57 @@ function load() {
                     {
                         field: 'type',
                         title: '类型',
-                        align: 'center'
+                        align: 'center',
+                        formatter: function (item, index) {
+                            if (item.type === 0) {
+                                return '<span class="label label-primary">目录</span>';
+                            }
+                            if (item.type === 1) {
+                                return '<span class="label label-success">菜单</span>';
+                            }
+                            if (item.type === 2) {
+                                return '<span class="label label-warning">按钮</span>';
+                            }
+                        }
                     },
                     {
                         field: 'icon',
                         title: '图标',
-                        align: 'center'
-                    },
-                    {
-                        field: 'orderNum',
-                        title: '排序',
-                        align: 'center'
-                    },
-                    {
-                        field: 'gmtCreate',
-                        title: '创建时间',
-                        align: 'center'
-                    },
-                    {
-                        field: 'gmtModified',
-                        title: '修改时间',
-                        align: 'center'
+                        align: 'center',
+                        formatter: function (item, index) {
+                            return item.icon == null ? ''
+                                : '<i class="' + item.icon
+                                + ' fa-lg"></i>';
+                        }
                     },
                     {
                         title: '操作',
                         field: 'id',
                         align: 'center',
-                        formatter: function (value, row, index) {
-                            var e = '<a class="btn btn-primary btn-sm ' + s_edit_h + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
-                                + row.menuId
+                        formatter: function (item, index) {
+                            var e = '<a class="btn btn-primary btn-sm '
+                                + s_edit_h
+                                + '" href="#" mce_href="#" title="编辑" onclick="edit(\''
+                                + item.menuId
                                 + '\')"><i class="fa fa-edit"></i></a> ';
-                            var d = '<a class="btn btn-warning btn-sm ' + s_remove_h + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
-                                + row.menuId
+                            var p = '<a class="btn btn-primary btn-sm '
+                                + s_add_h
+                                + '" href="#" mce_href="#" title="添加下级" onclick="add(\''
+                                + item.menuId
+                                + '\')"><i class="fa fa-plus"></i></a> ';
+                            var d = '<a class="btn btn-warning btn-sm '
+                                + s_remove_h
+                                + '" href="#" title="删除"  mce_href="#" onclick="remove(\''
+                                + item.menuId
                                 + '\')"><i class="fa fa-remove"></i></a> ';
-                            var f = '<a class="btn btn-success btn-sm" href="#" title="备用"  mce_href="#" onclick="resetPwd(\''
-                                + row.menuId
-                                + '\')"><i class="fa fa-key"></i></a> ';
-                            return e + d;
+                            return e + d + p;
                         }
                     }]
             });
 }
 
 function reLoad() {
-    $('#exampleTable').bootstrapTable('refresh');
+    load();
 }
 
 function add() {
@@ -129,6 +131,17 @@ function add() {
         shadeClose: false, // 点击遮罩关闭层
         area: ['800px', '520px'],
         content: prefix + '/add' // iframe的url
+    });
+}
+
+function add(pId) {
+    layer.open({
+        type: 2,
+        title: '增加菜单',
+        maxmin: true,
+        shadeClose: false, // 点击遮罩关闭层
+        area: ['800px', '520px'],
+        content: prefix + '/add/' + pId // iframe的url
     });
 }
 
@@ -163,9 +176,6 @@ function remove(id) {
             }
         });
     })
-}
-
-function resetPwd(id) {
 }
 
 function batchRemove() {
