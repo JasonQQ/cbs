@@ -23,95 +23,95 @@ import com.bluecity.cbs.common.utils.R;
 
 /**
  * 菜单管理
- * 
+ *
  * @author bluecity
  * @email 22829273@qq.com
- * @date 2018-07-25 23:07:32
+ * @date 2018-10-01 15:16:04
  */
- 
+
 @Controller
 @RequestMapping("/system/menu")
 public class MenuController {
-	@Autowired
-	private MenuService menuService;
-	
-	@GetMapping()
-	@RequiresPermissions("system:menu:menu")
-	String Menu(){
-	    return "system/menu/menu";
-	}
-	
-	@ResponseBody
-	@GetMapping("/list")
-	//@RequiresPermissions("system:menu:menu")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        Query query = new Query(params);
-		List<MenuDO> menuList = menuService.list(query);
-		int total = menuService.count(query);
-		PageUtils pageUtils = new PageUtils(menuList, total);
-		return pageUtils;
-	}
-	
-	@GetMapping("/add")
-	@RequiresPermissions("system:menu:add")
-	String add(){
-	    return "system/menu/add";
-	}
+    @Autowired
+    private MenuService menuService;
 
-	@GetMapping("/edit/{menuId}")
-	@RequiresPermissions("system:menu:edit")
-	String edit(@PathVariable("menuId") Long menuId,Model model){
-		MenuDO menu = menuService.get(menuId);
-		model.addAttribute("menu", menu);
-	    return "system/menu/edit";
-	}
-	
-	/**
-	 * 保存
-	 */
-	@ResponseBody
-	@PostMapping("/save")
-	@RequiresPermissions("system:menu:add")
-	public R save( MenuDO menu){
-		if(menuService.save(menu)>0){
-			return R.ok();
-		}
-		return R.error();
-	}
-	/**
-	 * 修改
-	 */
-	@ResponseBody
-	@RequestMapping("/update")
-	@RequiresPermissions("system:menu:edit")
-	public R update( MenuDO menu){
-		menuService.update(menu);
-		return R.ok();
-	}
-	
-	/**
-	 * 删除
-	 */
-	@PostMapping( "/remove")
-	@ResponseBody
-	@RequiresPermissions("system:menu:remove")
-	public R remove( Long menuId){
-		if(menuService.remove(menuId)>0){
-		return R.ok();
-		}
-		return R.error();
-	}
-	
-	/**
-	 * 删除
-	 */
-	@PostMapping( "/batchRemove")
-	@ResponseBody
-	@RequiresPermissions("system:menu:batchRemove")
-	public R remove(@RequestParam("ids[]") Long[] menuIds){
-		menuService.batchRemove(menuIds);
-		return R.ok();
-	}
-	
+    @GetMapping()
+    @RequiresPermissions("system:menu:menu")
+    String Menu() {
+        return "system/menu/menu" ;
+    }
+
+    @ResponseBody
+    @GetMapping("/list")
+    @RequiresPermissions("system:menu:menu")
+    public PageUtils list(@RequestParam Map<String, Object> params) {
+        //查询列表数据
+        Query query = new Query(params);
+        List<MenuDO> menuList = menuService.list(query);
+        int total = menuService.count(query);
+        PageUtils pageUtils = new PageUtils(menuList, total);
+        return pageUtils;
+    }
+
+    @GetMapping("/add")
+    @RequiresPermissions("system:menu:add")
+    String add() {
+        return "system/menu/add" ;
+    }
+
+    @GetMapping("/edit/{menuId}")
+    @RequiresPermissions("system:menu:edit")
+    String edit(@PathVariable("menuId") Long menuId, Model model) {
+        MenuDO menu = menuService.get(menuId);
+        model.addAttribute("menu", menu);
+        return "system/menu/edit" ;
+    }
+
+    /**
+     * 保存
+     */
+    @ResponseBody
+    @PostMapping("/save")
+    @RequiresPermissions("system:menu:add")
+    public R save(MenuDO menu) {
+        if (menuService.save(menu) > 0) {
+            return R.ok();
+        }
+        return R.error();
+    }
+
+    /**
+     * 修改
+     */
+    @ResponseBody
+    @RequestMapping("/update")
+    @RequiresPermissions("system:menu:edit")
+    public R update(MenuDO menu) {
+        menuService.update(menu);
+        return R.ok();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/remove")
+    @ResponseBody
+    @RequiresPermissions("system:menu:remove")
+    public R remove( Long menuId) {
+        if (menuService.remove(menuId) > 0) {
+            return R.ok();
+        }
+        return R.error();
+    }
+
+    /**
+     * 删除
+     */
+    @PostMapping("/batchRemove")
+    @ResponseBody
+    @RequiresPermissions("system:menu:batchRemove")
+    public R remove(@RequestParam("ids[]") Long[] menuIds) {
+        menuService.batchRemove(menuIds);
+        return R.ok();
+    }
 }

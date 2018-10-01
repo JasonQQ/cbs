@@ -9,24 +9,25 @@ import org.apache.ibatis.annotations.Mapper;
 
 /**
  * 菜单管理
+ *
  * @author bluecity
  * @email 22829273@qq.com
- * @date 2018-07-25 23:07:32
+ * @date 2018-10-01 15:16:04
  */
+
 @Mapper
 public interface MenuDao {
+    MenuDO get(Long menuId);
 
-	MenuDO get(Long menuId);
-	
-	List<MenuDO> list(Map<String,Object> map);
-	
-	int count(Map<String,Object> map);
-	
-	int save(MenuDO menu);
-	
-	int update(MenuDO menu);
-	
-	int remove(Long menu_id);
-	
-	int batchRemove(Long[] menuIds);
+    List<MenuDO> list(Map<String, Object> map);
+
+    int count(Map<String, Object> map);
+
+    int save(MenuDO menu);
+
+    int update(MenuDO menu);
+
+    int remove(Long menu_id);
+
+    int batchRemove(Long[] menuIds);
 }
