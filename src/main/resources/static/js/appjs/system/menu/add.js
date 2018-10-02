@@ -2,6 +2,17 @@ var prefix = "/system/menu"
 
 $().ready(function () {
     validateRule();
+    //打开图标列表
+    $("#ico-btn").click(function(){
+        layer.open({
+            type: 2,
+            title:'图标列表',
+            content: '/FontIcoList.html',
+            area: ['480px', '90%'],
+            success: function(layero, index){
+            }
+        });
+    });
 });
 
 $.validator.setDefaults({

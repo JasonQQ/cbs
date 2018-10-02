@@ -9,14 +9,15 @@
                     <div class="ibox float-e-margins">
                         <div class="ibox-content">
                             <form class="form-horizontal m-t" id="signupForm">
+                                <input id="parentId" name="parentId" type="hidden"
+                                       th:value="${pId}"/>
                                 <input id="menuId" name="menuId"
-                                       th:value="${menu.menuId}" type="hidden">
+                                       type="hidden" th:value="${menu.menuId}"/>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">父编号：</label>
+                                    <label class="col-sm-3 control-label">上级菜单：</label>
                                     <div class="col-sm-8">
-                                        <input id="parentId" name="parentId"
-                                               th:value="${menu.parentId}" class="form-control"
-                                               type="text">
+                                        <input id="" name="" class="form-control" type="text"
+                                               th:value="${pName}" readonly>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -25,6 +26,26 @@
                                         <input id="name" name="name"
                                                th:value="${menu.name}" class="form-control"
                                                type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">类型：</label>
+                                    <div class="col-sm-8">
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   th:field="*{menu.type}" name="type" value="0"/>
+                                            目录
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   th:field="*{menu.type}" name="type" value="1"/>
+                                            菜单
+                                        </label>
+                                        <label class="radio-inline">
+                                            <input type="radio"
+                                                   th:field="*{menu.type}" name="type" value="2"/>
+                                            按钮
+                                        </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -44,28 +65,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-sm-3 control-label">类型：</label>
-                                    <div class="col-sm-8">
-                                        <input id="type" name="type"
-                                               th:value="${menu.type}" class="form-control"
-                                               type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-3 control-label">图标：</label>
-                                    <div class="col-sm-8">
-                                        <input id="icon" name="icon"
-                                               th:value="${menu.icon}" class="form-control"
-                                               type="text">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <label class="col-sm-3 control-label">排序：</label>
                                     <div class="col-sm-8">
                                         <input id="orderNum" name="orderNum"
                                                th:value="${menu.orderNum}" class="form-control"
                                                type="text">
                                     </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">图标：</label>
+                                    <div class="col-sm-5">
+                                        <input id="icon" name="icon" class="form-control" type="text"
+                                               placeholder="例如：fa fa-circle-o" th:value="${menu.icon}">
+                                    </div>
+                                    <input id="ico-btn" class="btn btn-warning" type="button" value="选择图标">
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-8 col-sm-offset-3">
