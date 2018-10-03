@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * 
+ * 用户管理
  *
  * @author bluecity
  * @email 22829273@qq.com

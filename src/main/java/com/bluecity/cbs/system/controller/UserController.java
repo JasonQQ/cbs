@@ -22,7 +22,7 @@ import com.bluecity.cbs.common.utils.Query;
 import com.bluecity.cbs.common.utils.R;
 
 /**
- * 
+ * 用户管理
  *
  * @author bluecity
  * @email 22829273@qq.com
