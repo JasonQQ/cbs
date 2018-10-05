@@ -37,3 +37,15 @@ CREATE TABLE `sys_user` (
   `district` varchar(255) DEFAULT NULL COMMENT '地区',
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=utf8 COMMENT='用户管理';
+
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role` (
+  `role_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `role_name` varchar(100) DEFAULT NULL COMMENT '角色名称',
+  `role_sign` varchar(100) DEFAULT NULL COMMENT '角色标识',
+  `remark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `user_id_create` bigint(255) DEFAULT NULL COMMENT '创建用户id',
+  `gmt_create` datetime DEFAULT NULL COMMENT '创建时间',
+  `gmt_modified` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COMMENT='角色管理';
