@@ -12,3 +12,6 @@ mybatis:
     map-underscore-to-camel-case: true
   mapper-locations: mybatis/**/*Mapper.xml
   typeAliasesPackage: com.bluecity.**.domain
+
+server:
+  session-timeout: 1800
