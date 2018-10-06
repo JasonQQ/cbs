@@ -34,12 +34,12 @@
                 </div>
                 <div class="m-b"></div>
                 <h3>
-                    欢迎使用 <strong>CBS管理系统</strong>
+                    欢迎使用 <strong>CBS后台管理系统</strong>
                 </h3>
                 <ul class="m-b">
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 菜单管理</li>
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 用户管理</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 代码生成</li>
+                    <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 业务管理</li>
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> CRM</li>
                     <li><i class="fa fa-arrow-circle-o-right m-r-xs"></i> 流程管理</li>
                 </ul>
@@ -49,10 +49,8 @@
             <form id="signupForm">
                 <h3 class="text-center">用户登录</h3>
                 <p class="m-t-md text-center">欢迎登录CBS后台管理系统</p>
-                <input type="text" name="username" class="form-control uname"
-                       value="admin"/>
-                <input type="password" name="password"
-                       class="form-control pword m-b" value="111111"/>
+                <input type="text" name="username" class="form-control uname"/>
+                <input type="password" name="password" class="form-control pword m-b"/>
                 <a id="login" class="btn btn-login btn-block">登录</a>
 
             </form>
@@ -111,7 +109,7 @@
     }
 
     function validateRule() {
-        var icon = "<i class='fa fa-times-circle'></i> ";
+        var icon = "<i class='fa fa-times-circle'></i>";
         $("#signupForm").validate({
             rules: {
                 username: {
@@ -123,10 +121,10 @@
             },
             messages: {
                 username: {
-                    required: icon + "请输入您的用户名",
+                    required: icon + "请输入您的用户名"
                 },
                 password: {
-                    required: icon + "请输入您的密码",
+                    required: icon + "请输入您的密码"
                 }
             }
         })
