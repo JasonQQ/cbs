@@ -1,0 +1,141 @@
+Skip to content
+Your account has been flagged.
+Because of that, your profile is hidden from the public. If you believe this is a mistake, contact support to have your account status reviewed.
+
+install universal source code
+Repositories7
+Code1M+
+Commits2K
+Issues14K
+Marketplace0
+Topics0
+Wikis3K
+Users0
+Language
+
+Sort
+
+1,772,869 code results
+@BU-DEPEND-Lab
+BU-DEPEND-Lab/DVRK – Makefile
+Showing the top eight matches
+Last indexed on Jul 13, 2018
+Makefile
+.PHONY : code/mtsUniversalRobotScriptRT.i
+
+# target to preprocess a source file
+code/mtsUniversalRobotScriptRT.cpp.i:
+	@echo "... install/local"
+	@echo "... edit_cache"
+	@echo "... code/mtsUniversalRobotScriptRT.o"
+	@echo "... code/mtsUniversalRobotScriptRT.i"
+@JmfanBU
+JmfanBU/dvrk_BU – Makefile
+Showing the top eight matches
+Last indexed on Jul 13, 2018
+Makefile
+.PHONY : code/mtsUniversalRobotScriptRT.i
+
+# target to preprocess a source file
+code/mtsUniversalRobotScriptRT.cpp.i:
+	@echo "... install/local"
+	@echo "... edit_cache"
+	@echo "... code/mtsUniversalRobotScriptRT.o"
+	@echo "... code/mtsUniversalRobotScriptRT.i"
+@a1black
+a1black/ubu-setup – universal-ctags.sh
+Showing the top seven matches
+Last indexed on Jul 13, 2018
+Shell
+echo '==> Install Universal Ctags from source code.'
+echo '==> Install dependencies.'
+sudo apt-get update -qq
+sudo apt-get install -qq build-essential pkg-config automake
+git clone -q --depth 1 https://github.com/universal-ctags/ctags.git $unctags_tmp 2> /dev/null
+[ $? -ne 0 ] && _exit 'Fail to download Universal Ctags source code.'
+cd $unctags_tmp > /dev/null
+@mbrucher
+mbrucher/ATK-plugins – ATKStereoUniversalDelay.iss
+Showing the top six matches
+Last indexed on Jun 28, 2018
+Inno Setup
+Source: "..\build-win\vst2\Win32\bin\ATKStereoUniversalDelay.dll"; DestDir: {code:GetVST2Dir_32}; Check: Is64BitInstallMode; Components:vst2_32; Flags: ignoreversion;
+Source: "..\build-win\vst2\x64\bin\ATKStereoUniversalDelay x64.dll"; DestDir: {code:GetVST2Dir_64}; Check: Is64BitInstallMode; Components:vst2_64; Flags: ignoreversion;
+@BU-DEPEND-Lab
+BU-DEPEND-Lab/DVRK – CMakeLists.txt
+Showing the top six matches
+Last indexed on Jul 13, 2018
+CMake
+  configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/code/sawUniversalRobotRevision.h.in"
+                  "${CMAKE_CURRENT_BINARY_DIR}/include/sawUniversalRobot/sawUniversalRobotRevision.h")
+               include/sawUniversalRobot/mtsUniversalRobotScriptRT.h
+               code/mtsUniversalRobotScriptRT.cpp)
+
+  # Link with cisst libraries
+@warrenwoolseyiii
+warrenwoolseyiii/M6e-NANO – Product.wxs
+Showing the top five matches
+Last indexed on Jul 10, 2018
+XML
+              DiskId='1' Source="$(var.UniversalReaderAssistant2.0.TargetDir)\UniversalReaderAssistant.exe"
+        <File Id='MercuryAPI' Name='MercuryAPI.dll'
+              Vital='yes' DiskId='1' Source="$(var.UniversalReaderAssistant2.0.TargetDir)\MercuryAPI.dll"/>
+@MuBoori
+MuBoori/HitoriGrab – opencvbuild.sh
+Showing the top six matches
+Last indexed on Jun 26, 2018
+Shell
+# OpenCV_Universal - Universal libaries and headers (for simulator AND device)
+# OpenCV.framework - Universal libraries and headers combined into an iOS framework
+#
+# OpenCV source can be obtained using Subversion:
+UNIVERSAL_INSTALL_DIR="$INSTALL_DIR/OpenCV_Universal"
+FRAMEWORK_DIR="$INSTALL_DIR/$FRAMEWORK_NAME.framework"
+
+echo "OpenCV source     :" $SRC_DIR
+@warrenwoolseyiii
+warrenwoolseyiii/M6e-NANO – Product.wxs
+Showing the top four matches
+Last indexed on Jul 10, 2018
+XML
+      <Component Id="ProductComponent" Guid="83c6aaba-17c0-4d13-8d13-516eb5b469da">
+        <File Id='URA2' Name='UniversalReaderAssistant.exe'
+              DiskId='1' Source="$(var.UniversalReaderAssistant2.0.TargetDir)\UniversalReaderAssistant.exe"
+        <File Id='MercuryAPI' Name='MercuryAPI.dll'
+              Vital='yes' DiskId='1' Source="$(var.UniversalReaderAssistant2.0.TargetDir)\MercuryAPI.dll"/>
+@jhu-saw
+jhu-saw/sawUniversalRobot – CMakeLists.txt
+Showing the top six matches
+Last indexed on Jul 7, 2018
+CMake
+  configure_file ("${CMAKE_CURRENT_SOURCE_DIR}/code/sawUniversalRobotRevision.h.in"
+                  "${CMAKE_CURRENT_BINARY_DIR}/include/sawUniversalRobot/sawUniversalRobotRevision.h")
+               include/sawUniversalRobot/mtsUniversalRobotScriptRT.h
+               code/mtsUniversalRobotScriptRT.cpp)
+
+  # Link with cisst libraries
+@apprenda
+apprenda/Cake.ProGet – UniversalPackageInstallerTests.cs
+Showing the top five matches
+Last indexed on Jul 9, 2018
+C#
+using Xunit;
+
+namespace Cake.ProGet.Tests.Universal.Install
+{
+    public sealed class UniversalPackageInstallerTests
+            var fixture = new UniversalPackageInstallerFixture();
+            fixture.GivenProcessExitsWithCode(1);
+© 2019 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+Press h to open a hovercard with more details.
